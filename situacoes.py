@@ -1,8 +1,8 @@
 import requests
 import pandas as pd
 import time
-
-
+token=st.secrets['token']
+Cookie==st.secrets['Cookie']
 
 payload = {}
 headers = {
