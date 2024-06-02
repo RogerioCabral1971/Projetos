@@ -1,14 +1,12 @@
 import requests
 import pandas as pd
-
-token=st.secrets['token']
-Cookie==st.secrets['Cookie']
+import streamlit as st
 
 payload = {}
 headers = {
   'Accept': 'application/json',
-  'Authorization': token,
-  'Cookie': Cookie
+  'Authorization': st.secrets.db_credentials.token,
+  'Cookie': st.secrets.db_credentials.Cookie
 }
 
 def canal_venda(df):
