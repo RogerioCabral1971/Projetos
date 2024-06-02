@@ -7,8 +7,8 @@ import time
 payload = {}
 headers = {
   'Accept': 'application/json',
-  'Authorization': 'Bearer 7fe30c52d2b20d4e1488d0188c90e331f45a9f49',
-  'Cookie': 'PHPSESSID=15de1ths4uag634bfr9fcqhivm'
+  'Authorization': 'Bearer' token,
+  'Cookie': Cookie
 }
 
 def situacao(df_vendas):
