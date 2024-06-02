@@ -1,11 +1,11 @@
 import requests
 import pandas as pd
-from vendas import token
+
 payload = {}
 headers = {
   'Accept': 'application/json',
-  'Authorization': 'Bearer 7fe30c52d2b20d4e1488d0188c90e331f45a9f49',
-  'Cookie': 'PHPSESSID=15de1ths4uag634bfr9fcqhivm'
+  'Authorization': 'Bearer' token,
+  'Cookie': Cookie
 }
 def nota_fical():
     nf = "https://bling.com.br/Api/v3/nfe"
