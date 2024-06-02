@@ -1,6 +1,6 @@
 import pandas as pd
 import canal_venda as cv
-import situacoes as st
+import situacoes as sit
 import requests
 import streamlit as st
 
@@ -23,7 +23,7 @@ def vendas(url):
     df_vendas=pd.DataFrame(response_vendas.json()['data'])
     if len(df_vendas)>0:
       df_vendas = cv.canal_venda(df_vendas)
-      df_vendas = st.situacao(df_vendas)
+      df_vendas = sit.situacao(df_vendas)
       df = pd.concat([df, df_vendas])
     else:
       break
