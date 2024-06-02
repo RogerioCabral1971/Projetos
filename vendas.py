@@ -2,13 +2,14 @@ import pandas as pd
 import canal_venda as cv
 import situacoes as st
 import requests
+import streamlit as st
 
 
 payload = {}
 headers = {
   'Accept': 'application/json',
-  'Authorization': token,
-  'Cookie': Cookie
+  'Authorization': st.secrets.db_credentials.token,
+  'Cookie': st.secrets.db_credentials.Cookie
 }
 
 
