@@ -1,6 +1,9 @@
 import requests
 import pandas as pd
 
+token=st.secrets['token']
+Cookie==st.secrets['Cookie']
+
 payload = {}
 headers = {
   'Accept': 'application/json',
