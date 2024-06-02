@@ -4,7 +4,7 @@ import pandas as pd
 payload = {}
 headers = {
   'Accept': 'application/json',
-  'Authorization': 'Bearer' token,
+  'Authorization': token,
   'Cookie': Cookie
 }
 
