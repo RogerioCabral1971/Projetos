@@ -8,8 +8,8 @@ import streamlit as st
 payload = {}
 headers = {
   'Accept': 'application/json',
-  'Authorization': st.secrets.db_credentials.token,
-  'Cookie': st.secrets.db_credentials.Cookie
+  'Authorization':f"{st.secrets['db_credentials']['token']}",
+  'Cookie': f"{st.secrets['db_credentials']['Cookie']}"
 }
 
 
