@@ -1,9 +1,8 @@
-import relatorio
+import relatorio as rel
 import datetime
 import streamlit as st
 import pandas as pd
 import montar_pag as pag
-import plotly.express as px
 
 
 st.set_page_config(layout='wide', page_title='PlenoLed', initial_sidebar_state="expanded")
@@ -21,7 +20,7 @@ if col2.button('Gerar Relatório'):
     inicial=periodo[0]
     fim=periodo[1]
     st.markdown(f"Resumo do Período de {inicial} até {fim}")
-    df=Relatorio.resumo_canal(inicial,fim, 'Finalizado')
+    df=rel.resumo_canal(inicial,fim, 'Finalizado')
     pag.cartao_resumo(df)
 
 
