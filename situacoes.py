@@ -3,14 +3,16 @@ import pandas as pd
 import time
 import streamlit as st
 
+
 payload = {}
 headers = {
   'Accept': 'application/json',
-  'Authorization': st.secrets.db_credentials.token,
-  'Cookie': st.secrets.db_credentials.Cookie
+  'Authorization':f"{st.secrets['db_credentials']['token']}",
+  'Cookie': f"{st.secrets['db_credentials']['Cookie']}"
 }
 
 def situacao(df_vendas):
+    df_situacoes_local = pd.read_parquet('situacoes.parquet')
     situacao = "https://bling.com.br/Api/v3/situacoes/"
     id_situacao=[]
     for id in df_vendas['situacao'].index:
@@ -19,10 +21,17 @@ def situacao(df_vendas):
     desc_situacao=[]
     id_situacao_=df_vendas['id_situacao'].unique()
     for id2 in id_situacao_:
-      temp_situacao = requests.request("GET", situacao + str(id2), headers=headers, data=payload)
-      desc=pd.DataFrame([temp_situacao.json()['data']])['nome'][0]
-      desc_situacao.append(desc)
-      time.sleep(0.5)
+
+        desc=list(df_situacoes_local.query(f'id_situacao=={id2}')['Descr_situacao'])
+        if len(desc)>0:
+            desc = list(df_situacoes_local.query(f'id_situacao=={id2}')['Descr_situacao'])[0]
+            desc_situacao.append(desc)
+        else:
+            temp_situacao = requests.request("GET", situacao + str(id2), headers=headers, data=payload)
+            desc=pd.DataFrame([temp_situacao.json()['data']])['nome'][0]
+            desc_situacao.append(desc)
+            time.sleep(0.5)
+
     df_situacoes=pd.DataFrame(data={'id_situacao':id_situacao_,'Descr_situacao':desc_situacao})
     df_total=pd.merge(df_vendas,df_situacoes, on='id_situacao')
     return df_total

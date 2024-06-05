@@ -1,0 +1,38 @@
+
+#MainMenu{
+    visibility: hidden;
+}
+
+.stDeployButton{
+    visibility:hidden;
+}
+
+.main{
+    background-color:rgb(10, 10, 10);
+}
+
+.ezrtsby2{
+    visibility: hidden;
+}
+.e1i5pmia1{
+    font-size:xx-large;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(255, 153, 0);
+}
+
+.st-ae{
+    color: rgb(255, 153, 0);
+    background-color: rgb(10, 10, 10);
+}
+
+.stButton :hover{
+    color: rgb(255, 153, 0);
+    border-color: black;
+}
+
+textos da pagina
+e1nzilvr4{
+    font-size: x-large;
+    font-style: oblique;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

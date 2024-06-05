@@ -5,14 +5,16 @@ import streamlit as st
 payload = {}
 headers = {
   'Accept': 'application/json',
-  'Authorization': st.secrets.db_credentials.token,
-  'Cookie': st.secrets.db_credentials.Cookie
+  'Authorization':f"{st.secrets['db_credentials']['token']}",
+  'Cookie': f"{st.secrets['db_credentials']['Cookie']}"
 }
 
 def canal_venda(df):
-    canalvenda = "https://bling.com.br/Api/v3/canais-venda"
-    response_canais = requests.request("GET", canalvenda, headers=headers, data=payload)
-    df_canais = pd.DataFrame(response_canais.json()['data'])
+    canal_venda_local=pd.read_parquet('canais_venda.parquet')
+    #canalvenda = "https://bling.com.br/Api/v3/canais-venda"
+    #response_canais = requests.request("GET", canalvenda, headers=headers, data=payload)
+    #df_canais = pd.DataFrame(response_canais.json()['data'])
+    df_canais=canal_venda_local
     id_canal=[]
     origem_venda=[]
     for id in df['loja'].index:

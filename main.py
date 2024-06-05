@@ -1,14 +1,33 @@
 import Relatorio
 import datetime
 import streamlit as st
+import pandas as pd
+import montar_pag as pag
+import plotly.express as px
 
-st.title('Pleno Led')
+
+st.set_page_config(layout='wide', page_title='PlenoLed', initial_sidebar_state="expanded")
+
+with open('styles.css') as f:
+    st.markdown(f'<style>{f.read()}<style>', unsafe_allow_html=True)
 today = datetime.datetime.now()
-coluna_date1,coluna_date2,coluna_date3,coluna_date4=st.columns(4)
-inicial=coluna_date1.date_input('Data Inicio', datetime.date(2024,5,15),format='YYYY-MM-DD')
-fim=coluna_date3.date_input('Data Final', today,format='YYYY-MM-DD')
-st.write('Total Venda Bruta - Somente vendas já Faturadas')
-st.data_editor(Relatorio.resumo_canal(inicial,fim, 'Finalizado'))
+
+with st.container(border=True):
+    col1,col2,col3,col4,col5,col6=st.columns([0.2,0.2,0.1,0.1,0.1,0.1])
+    col1.image('img/plenoled.com.br.webp',width=250)
+    periodo=col2.date_input('Selecione o Periodo', value=(pd.to_datetime('2024-05-31'), pd.to_datetime(f'{today}')))
+
+if col2.button('Gerar Relatório'):
+    inicial=periodo[0]
+    fim=periodo[1]
+    st.markdown(f"Resumo do Período de {inicial} até {fim}")
+    df=Relatorio.resumo_canal(inicial,fim, 'Finalizado')
+    pag.cartao_resumo(df)
+
+
+
+
+
 
 
 
