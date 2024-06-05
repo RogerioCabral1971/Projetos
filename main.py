@@ -1,4 +1,4 @@
-import relatorio as rel
+import relatorio_plenoled as rel
 import datetime
 import streamlit as st
 import pandas as pd
