@@ -1,5 +1,5 @@
 import streamlit as st
-import Relatorio
+import relatorio_plenoled as rel
 
 def formatar_num(valor):
     valor_frmt="{:,.2f}".format(valor).replace(',','_').replace('.',',').replace('_','.')
@@ -19,4 +19,4 @@ def cartao_resumo(df):
 
 def tabela_resumo(df,inicial,fim):
     df=st.data_editor(df,key='tabresumo')
-    st.data_editor(Relatorio.resumo_nf(inicial,fim))
+    st.data_editor(rel.resumo_nf(inicial,fim))
