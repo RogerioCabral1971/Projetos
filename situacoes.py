@@ -1,18 +1,11 @@
-import requests
 import pandas as pd
 import time
+import extrair_informacoes as extr
 import streamlit as st
-
-
-payload = {}
-headers = {
-  'Accept': 'application/json',
-  'Authorization':f"{st.secrets['db_credentials']['token']}",
-  'Cookie': f"{st.secrets['db_credentials']['Cookie']}"
-}
+dir=st.secrets['pastas']['dir']
 
 def situacao(df_vendas):
-    df_situacoes_local = pd.read_parquet('situacoes.parquet')
+    df_situacoes_local = pd.read_parquet(f'{dir}situacoes.parquet')
     situacao = "https://bling.com.br/Api/v3/situacoes/"
     id_situacao=[]
     for id in df_vendas['situacao'].index:
@@ -21,13 +14,12 @@ def situacao(df_vendas):
     desc_situacao=[]
     id_situacao_=df_vendas['id_situacao'].unique()
     for id2 in id_situacao_:
-
         desc=list(df_situacoes_local.query(f'id_situacao=={id2}')['Descr_situacao'])
         if len(desc)>0:
             desc = list(df_situacoes_local.query(f'id_situacao=={id2}')['Descr_situacao'])[0]
             desc_situacao.append(desc)
         else:
-            temp_situacao = requests.request("GET", situacao + str(id2), headers=headers, data=payload)
+            temp_situacao = extr.extrai(situacao + str(id2))
             desc=pd.DataFrame([temp_situacao.json()['data']])['nome'][0]
             desc_situacao.append(desc)
             time.sleep(0.5)

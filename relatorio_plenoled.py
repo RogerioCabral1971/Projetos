@@ -1,18 +1,23 @@
 import pandas as pd
 import vendas as vd
 import nf as nf
-import streamlit as st
+
 
 def resumo_canal(dt_inicial,dt_fim, status_pedido):
-    df=vd.vendas(f"https://bling.com.br/Api/v3/pedidos/vendas?dataInicial={dt_inicial}&dataFinal={dt_fim}&pagina=",status_pedido)
-
-    df2=df.groupby('origem_venda').total.agg(['count','sum','mean']).rename(columns={
-       'count':'Quantidade Venda','sum':'Total R$', 'mean':'Media R$'})
-    df2.reset_index(inplace=True)
-    df3 = df.groupby('origem_venda')['Valor Imposto'].agg('sum')
-    df2=pd.merge(df2,df3,how = 'inner', on = 'origem_venda')
-    df2['% Venda']=df2['% Venda'] = ((df2['Total R$'] / df2['Total R$'].sum()) * 100).round(0)
-    return df2.rename(columns={'origem_venda':'Canal de Venda'})
+    df = vd.vendas('url', dt_inicial, dt_fim, status_pedido)
+    df_resumo=df[0]
+    df_prod=df[1]
+    df_frete=df[2]
+    df2=pd.DataFrame()
+    if len(df[0]) > 0:
+        df2=df_resumo.groupby('origem_venda').total.agg(['count','sum','mean']).rename(columns={
+           'count':'Quantidade Venda','sum':'Total R$', 'mean':'Media R$'})
+        df2.reset_index(inplace=True)
+        df3 = df_resumo.groupby('origem_venda')['Impostos'].agg('sum')
+        df2=pd.merge(df2,df3,how = 'inner', on = 'origem_venda')
+        df2['% Venda']=((df2['Total R$'] / df2['Total R$'].sum()) * 100).round(0)
+        df2=df2.rename(columns={'origem_venda': 'Canal de Venda'})
+    return df2, df_prod, df_frete
 
 def resumo_vendas(dt_inicial,dt_fim):
     df=vd.vendas(f"https://bling.com.br/Api/v3/pedidos/vendas?dataInicial={dt_inicial}&dataFinal={dt_fim}&pagina=")
