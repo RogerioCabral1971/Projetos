@@ -1,7 +1,7 @@
 import extrair_informacoes as extr
 import pandas as pd
 import streamlit as st
-dir=st.secrets['pastas']['dir']
+dir=extr.ler_toml()['pastas']['dir']
 
 def produtos_vendidos(id):
     df_itens = pd.DataFrame()

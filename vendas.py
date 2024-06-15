@@ -2,9 +2,9 @@ import pandas as pd
 import canal_venda as cv
 import impostos as imp
 import produtos as prod
-import streamlit as st
+import extrair_informacoes as ext
 
-dir=st.secrets['pastas']['dir']
+dir=ext.ler_toml()['pastas']['dir']
 
 def vendas(url,dt_inicial, dt_fim, status):
   df=pd.DataFrame()

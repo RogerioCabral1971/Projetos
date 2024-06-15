@@ -1,6 +1,7 @@
 import pandas as pd
-import streamlit as st
-dir=st.secrets['pastas']['dir']
+import extrair_informacoes as ext
+
+dir=ext.ler_toml()['pastas']['dir']
 
 
 def canal_venda(df):

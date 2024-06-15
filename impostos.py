@@ -1,8 +1,9 @@
 import pandas as pd
 import streamlit as st
 import nf as nfe
+import extrair_informacoes as ext
 
-dir=st.secrets['pastas']['dir']
+dir=ext.ler_toml()['pastas']['dir']
 
 def extr_imposto(df):
   my_bar = st.progress(0, text="progress_text")

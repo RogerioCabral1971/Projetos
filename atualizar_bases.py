@@ -6,7 +6,7 @@ import datetime
 import xmltodict
 
 
-dir=st.secrets['pastas']['dir']
+dir=extr.ler_toml()['pastas']['dir']
 today = datetime.datetime.now()
 dt_fim=format(pd.to_datetime(today),'%Y-%m-%d')
 
