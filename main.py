@@ -7,8 +7,9 @@ import requests
 
 today=datetime.date.today()
 dia=datetime.timedelta(1)
-
-st.write(os.path.basename('C:\PlenoLed\secrets.toml'))
+with open(r"os.path.basename('C:\PlenoLed\secrets.toml'), "rb") as f:
+        valores = tomllib.load(f)
+st.write(valore)
 
 
 
