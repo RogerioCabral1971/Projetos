@@ -12,14 +12,7 @@ if fileitem.filename:
    message = 'The file "' + fn + '" was uploaded successfully'
 else:
    message = 'No file was uploaded'
-print """\
-Content-Type: text/html\n
-<html>
-<body>
-   <p>%s</p>
-</body>
-</html>
-""" % (message,)
+print (message)
 
 
 
