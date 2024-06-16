@@ -1,10 +1,7 @@
-import relatorio_plenoled as rel
+
 import datetime
 import streamlit as st
-import pandas as pd
-import montar_pag as pag
-import atualizar_bases
-import extrair_informacoes as ext
+
 import tomllib
 import requests
 
