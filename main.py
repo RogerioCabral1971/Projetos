@@ -1,9 +1,10 @@
 import streamlit as st
 import pandas as pd
+import tomllib
 
 
 arq=st.file_uploader("Escolho",accept_multiple_files=True)
-st.write(pd.read_parquet(arq[0]))
+st.write(tomllib.load(arq))
 
 
 
