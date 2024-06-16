@@ -6,7 +6,7 @@ import tomllib
 arq=st.file_uploader("Escolho",accept_multiple_files=True)
 st.write(arq[0])
 st.write(tomllib.load(arq[0])['pastas']['dir'])
-st.write(pd.DataFrame(arq[1]))
+st.write(pd.read_parquet(arq[1]))
 
 
 
