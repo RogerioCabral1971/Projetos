@@ -7,8 +7,7 @@ import requests
 
 today=datetime.date.today()
 dia=datetime.timedelta(1)
-status = 'Finalizado'
-dir=ext.ler_toml()['pastas']['dir']
+
 
 # define the relative path of the sample file
 file_path = "C:/PlenoLed/secrets.toml"
