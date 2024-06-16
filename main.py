@@ -6,7 +6,7 @@ arq=st.file_uploader("Escolho",accept_multiple_files=True)
 st.write(pd.read_parquet(arq[0]))
 
 st.header('Default Options')
-event = st_file_browser("example_artifacts", key='A')
+event = st_file_browser('C:\PlenoLed\')
 st.write(event)
 
 
