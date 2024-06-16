@@ -3,10 +3,8 @@ import pandas as pd
 import tomllib
 
 
-arq=st.file_uploader("Escolho",accept_multiple_files=True)
-st.write(arq[0])
-st.write(tomllib.load(arq[0])['pastas']['dir'])
-st.write(pd.read_parquet(arq[1]))
+with open("6136afc4-e52d-4eb5-acb1-2bd35bfb7959", "rb") as f:
+    valores = tomllib.load(f)
 
 
 
