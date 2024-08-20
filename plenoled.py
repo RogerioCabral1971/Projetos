@@ -13,5 +13,6 @@ today=datetime.date.today()
 dt_inicio=today-datetime.timedelta(90)
 dia=datetime.timedelta(1)
 st.write(dt_inicio)
+os.listdir('c:\PlenoLed')
 
 
