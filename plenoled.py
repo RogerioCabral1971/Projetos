@@ -13,6 +13,6 @@ today=datetime.date.today()
 dt_inicio=today-datetime.timedelta(90)
 dia=datetime.timedelta(1)
 st.write(dt_inicio)
-os.listdir('c:\PlenoLed')
+os.listdir('http://192.168.1.114:8501//c://PlenoLed')
 
 
