@@ -4,7 +4,7 @@ import xmltodict
 import extrair_informacoes as extr
 import streamlit as st
 
-dir=st.secrets['pastas']['dir']
+dir=extr.ler_toml()['pastas']['dir']
 
 def nota_fiscal(url):
     cont=0

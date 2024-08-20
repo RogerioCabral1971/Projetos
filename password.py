@@ -1,3 +1,12 @@
+
+from tkinter.filedialog import askdirectory, askopenfilename
+
+pasta=askdirectory(title='Abrir')
+print(pasta)
+
+
+
+
 import streamlit as st
 col1, col2, col3 = st.columns(3)
 with col1:
