@@ -12,6 +12,6 @@ st.set_page_config(layout='wide', page_title='PlenoLed',initial_sidebar_state='c
 today=datetime.date.today()
 dt_inicio=today-datetime.timedelta(90)
 dia=datetime.timedelta(1)
-st.write('dia')
+st.write(dia)
 
 
